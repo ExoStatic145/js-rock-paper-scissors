@@ -4,6 +4,78 @@
 </head>
 <body>
     <script>
-    
+    const option1 = "rock";
+    const option2 = "paper";
+    const option3 = "scissors";
+    let currentComputerScore = 0;
+    let currentPlayerScore = 0;
+        
+    function startGame() {
+        currentRound = 0
+        currentPlayerScore = 0
+        currentComputerScore = 0
+        
+    }
+
+    function playRound() {
+        playerChoice = getPlayerChoice();
+        computerChoice = getComputerChoice();
+        return determineResult(playerChoice, computerChoice);
+        };
+
+    function getPlayerChoice() {
+        let playerChoice = prompt("Rock, Paper or Scissors?");
+        return playerChoice.toLowerCase();
+        };
+
+    function getComputerChoice() {
+        switch (Math.ceil(Math.random() * 3)) {
+            case 1:
+                computerChoice = option1;
+                return computerChoice;
+                break;
+            case 2:
+                computerChoice = option2;
+                return computerChoice;
+                break;
+            case 3:
+                computerChoice = option3;
+                return computerChoice;       
+        };
+    }
+
+    function determineResult(playerChoice, computerChoice){
+        switch (playerChoice) {
+            case option1:
+                if (computerChoice == option1) {
+                    return "Draw.";
+                } else if (computerChoice == option2) {
+                    return "Paper beats Rock. You lose.";
+                } else if (computerChoice == option3) {
+                    return "Rock beats Scissors. You win.";
+                }
+                break;
+            case option2:
+                if (computerChoice == option2) {
+                    return "Draw.";
+                } else if (computerChoice == option1) {
+                    return "Paper beats Rock. You win.";
+                } else if (computerChoice == option3) {
+                    return "Scissors beat Paper. You lose.";
+                }
+                break;
+            case option3:
+                if (computerChoice == option3) {
+                    return "Draw.";
+                } else if (computerChoice == option1) {
+                    return "Rock beats Scissors. You lose.";
+                } else if (computerChoice == option2) {
+                    return "Scissors beat Paper. You win.";
+                }
+                break;
+                }
+        };
+
+        playRound();
     </script>
 </body>
